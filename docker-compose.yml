@@ -1,18 +1,19 @@
 version: "3.8"
-
 services:
-  
-  app:
+  app:    
+    container_name: springboot-mongodb
+    image: springboot    
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
     ports:
-      - 8080:8080
+      - "8080:8080"
     depends_on: 
-      - db  
-  db:
-    image: mongo:latest
-    container_name: db
+      - mongodb  
+  
+  mongodb:
+    container_name: mongodb
+    image: mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
+      
